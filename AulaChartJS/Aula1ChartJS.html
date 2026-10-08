@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementando o ChartJS</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- tag script: serve para importar códigos -->
+</head>
+<style>
+    .canva {
+        width: 800px;
+        margin: 0 auto 30px;
+    }
+
+    body {
+        background-color: #f8faed;
+    }
+    .tituloPagina{
+        font-family: monospace;
+        text-align: center;
+        background-color: rgb(214, 195, 169);
+    }
+    .tituloGrafico{
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        text-align: center;
+    }
+</style>
+<body>
+
+    <div class ="tituloPagina">
+    <h1>Dashboard com ChartJS</h2>
+    </div>
+
+    <div class="tituloGrafico">
+    <h3>Gráfico de temperatura e umidade ao longo do dia:</h3>
+    </div>
+    
+
+    <div class ="canva">
+    <canvas id="Temperaturas"></canvas>
+    </div>
+
+    <div class="tituloGrafico"> 
+    <h3>Gráfico de temperatura e umidade médias no período:</h3>
+    </div>
+   
+    <div class ="canva">
+    <canvas id="Medias"></canvas>
+    </div> 
+  <!-- tag canvas: como se fosse um quadro em branco, para um desenho.
+   aqui que vai ser renderizado o gráfico! -->
+</div>
+
+</body>
+
+<script>
+  const ctx = document.getElementById('Medias');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+      datasets: [{
+        label: 'Temperatura média', 
+        data: [22, 24, 27, 23, 20, 18],
+        backgroundColor: '#A3C1AD',
+        borderWidth: 1
+        },
+        {label: 'Umidade média', 
+        data: [90, 89, 93, 87, 88, 82],
+        backgroundColor: '#F7CAC9',
+        borderWidth: 1}
+         
+    ],
+      
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  const ctx2 = document.getElementById('Temperaturas');
+
+  new Chart(ctx2, {
+    type: 'line',
+    data: {
+      labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+      datasets: [{
+        label: 'Temperatura', 
+        data: [30, 29, 28, 25, 22, 23],
+        backgroundColor: '#A3C1AD',
+        borderWidth: 5
+        },
+        {label: 'Umidade', 
+        data: [80, 82, 80, 85, 80, 83],
+        backgroundColor: '#F7CAC9',
+        borderWidth: 5}
+         
+    ],
+      
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+
+</script>
+
+
+
+
+
+</html>
